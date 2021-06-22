@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-eks
+  labels:
+    app: hello-eks
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hello-eks
+  template:
+    metadata:
+      labels:
+        app: hello-eks
+    spec:
+      containers:
+      - name: hello-eks
+        image: paulomatosj/hello-eks:2
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NAME
+          value: 'Paulo Matos'
